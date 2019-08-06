@@ -133,10 +133,10 @@ class Circle extends Shape {
               math.pi / 2.0) {
             return arc;
           } else {
-            return 360.0 - arc;
+            return 2 * math.pi - arc;
           }
         } else {
-          return 360.0 - arc;
+          return 2 * math.pi - arc;
         }
         break;
       case Radiant.Second:
@@ -154,10 +154,10 @@ class Circle extends Shape {
               math.pi / 2.0) {
             return arc;
           } else {
-            return 360.0 - arc;
+            return 2 * math.pi - arc;
           }
         } else {
-          return 360.0 - arc;
+          return 2 * math.pi - arc;
         }
         break;
       case Radiant.Third:
@@ -175,10 +175,10 @@ class Circle extends Shape {
               math.pi / 2.0) {
             return arc;
           } else {
-            return 360.0 - arc;
+            return 2 * math.pi - arc;
           }
         } else {
-          return 360.0 - arc;
+          return 2 * math.pi - arc;
         }
         break;
       case Radiant.Fourth:
@@ -196,10 +196,10 @@ class Circle extends Shape {
               math.pi / 2.0) {
             return arc;
           } else {
-            return 360.0 - arc;
+            return 2 * math.pi - arc;
           }
         } else {
-          return 360.0 - arc;
+          return 2 * math.pi - arc;
         }
         break;
     }
