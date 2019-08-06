@@ -4,10 +4,14 @@ import 'package:geometry/src/line.dart';
 import 'package:meta/meta.dart';
 import 'dart:math' as math;
 
+enum Radiant { First, Second, Third, Fourth }
+
 ///rappresent a circle on the plane
 class Circle extends Shape {
   final Point center;
   final double radius;
+
+  double get circumference => 2 * math.pi * radius;
 
   ///the [a] coefficient of the canonical equation of the circle
   double get a => -center.x * 2.0;
@@ -91,12 +95,115 @@ class Circle extends Shape {
     return Circle.fromCoefficients(a: a, b: b, c: c);
   }
 
-  ///return the arc between [pointA] and [pointB] that are on [this]
+  Radiant radiantOf(Point point) {
+    if (point.x >= center.x) {
+      if (point.y >= center.y) {
+        return Radiant.First;
+      } else {
+        return Radiant.Fourth;
+      }
+    } else {
+      if (point.y >= center.y) {
+        return Radiant.Second;
+      } else {
+        return Radiant.Fourth;
+      }
+    }
+  }
+
+  ///return the clockwise angle of the arc between [pointA] and [pointB] that are on [this]
   double arc(Point pointA, Point pointB) {
     assert(onCircle(pointA));
     assert(onCircle(pointB));
-    return Line.fromPoints(pointA: pointA, pointB: center)
+    double arc = Line.fromPoints(pointA: pointA, pointB: center)
         .angleBetween(Line.fromPoints(pointA: pointB, pointB: center));
+    switch (radiantOf(pointA)) {
+      case Radiant.First:
+        if (radiantOf(pointB) == Radiant.First) {
+          return arc;
+        } else if (radiantOf(pointB) == Radiant.Fourth) {
+          if (Line.fromPoints(pointA: pointA, pointB: center).angleBetween(
+                      Line.fromPoints(
+                          pointA: Point(center.x + radius, center.y),
+                          pointB: center)) +
+                  Line.fromPoints(pointA: pointB, pointB: center).angleBetween(
+                      Line.fromPoints(
+                          pointA: Point(center.x + radius, center.y),
+                          pointB: center)) <=
+              math.pi / 2.0) {
+            return arc;
+          } else {
+            return 360.0 - arc;
+          }
+        } else {
+          return 360.0 - arc;
+        }
+        break;
+      case Radiant.Second:
+        if (radiantOf(pointB) == Radiant.Second) {
+          return arc;
+        } else if (radiantOf(pointB) == Radiant.First) {
+          if (Line.fromPoints(pointA: pointA, pointB: center).angleBetween(
+                      Line.fromPoints(
+                          pointA: Point(center.x, center.y + radius),
+                          pointB: center)) +
+                  Line.fromPoints(pointA: pointB, pointB: center).angleBetween(
+                      Line.fromPoints(
+                          pointA: Point(center.x, center.y + radius),
+                          pointB: center)) <=
+              math.pi / 2.0) {
+            return arc;
+          } else {
+            return 360.0 - arc;
+          }
+        } else {
+          return 360.0 - arc;
+        }
+        break;
+      case Radiant.Third:
+        if (radiantOf(pointB) == Radiant.Third) {
+          return arc;
+        } else if (radiantOf(pointB) == Radiant.Second) {
+          if (Line.fromPoints(pointA: pointA, pointB: center).angleBetween(
+                      Line.fromPoints(
+                          pointA: Point(center.x - radius, center.y),
+                          pointB: center)) +
+                  Line.fromPoints(pointA: pointB, pointB: center).angleBetween(
+                      Line.fromPoints(
+                          pointA: Point(center.x - radius, center.y),
+                          pointB: center)) <=
+              math.pi / 2.0) {
+            return arc;
+          } else {
+            return 360.0 - arc;
+          }
+        } else {
+          return 360.0 - arc;
+        }
+        break;
+      case Radiant.Fourth:
+        if (radiantOf(pointB) == Radiant.Fourth) {
+          return arc;
+        } else if (radiantOf(pointB) == Radiant.Third) {
+          if (Line.fromPoints(pointA: pointA, pointB: center).angleBetween(
+                      Line.fromPoints(
+                          pointA: Point(center.x, center.y - radius),
+                          pointB: center)) +
+                  Line.fromPoints(pointA: pointB, pointB: center).angleBetween(
+                      Line.fromPoints(
+                          pointA: Point(center.x, center.y - radius),
+                          pointB: center)) <=
+              math.pi / 2.0) {
+            return arc;
+          } else {
+            return 360.0 - arc;
+          }
+        } else {
+          return 360.0 - arc;
+        }
+        break;
+    }
+    return 0.0;
   }
 
   ///returns a list of point where [this] circle intersect with the [other] shape
