@@ -121,14 +121,14 @@ class Circle extends Shape {
       case Radiant.First:
         if (radiantOf(pointB) == Radiant.First) {
           return arc;
-        } else if (radiantOf(pointB) == Radiant.Fourth) {
+        } else if (radiantOf(pointB) == Radiant.Second) {
           if (Line.fromPoints(pointA: pointA, pointB: center).angleBetween(
                       Line.fromPoints(
-                          pointA: Point(center.x + radius, center.y),
+                          pointA: Point(center.x, center.y + radius),
                           pointB: center)) +
                   Line.fromPoints(pointA: pointB, pointB: center).angleBetween(
                       Line.fromPoints(
-                          pointA: Point(center.x + radius, center.y),
+                          pointA: Point(center.x, center.y + radius),
                           pointB: center)) <=
               math.pi / 2.0) {
             return arc;
@@ -142,14 +142,14 @@ class Circle extends Shape {
       case Radiant.Second:
         if (radiantOf(pointB) == Radiant.Second) {
           return arc;
-        } else if (radiantOf(pointB) == Radiant.First) {
+        } else if (radiantOf(pointB) == Radiant.Third) {
           if (Line.fromPoints(pointA: pointA, pointB: center).angleBetween(
                       Line.fromPoints(
-                          pointA: Point(center.x, center.y + radius),
+                          pointA: Point(center.x - radius, center.y),
                           pointB: center)) +
                   Line.fromPoints(pointA: pointB, pointB: center).angleBetween(
                       Line.fromPoints(
-                          pointA: Point(center.x, center.y + radius),
+                          pointA: Point(center.x - radius, center.y),
                           pointB: center)) <=
               math.pi / 2.0) {
             return arc;
@@ -163,14 +163,14 @@ class Circle extends Shape {
       case Radiant.Third:
         if (radiantOf(pointB) == Radiant.Third) {
           return arc;
-        } else if (radiantOf(pointB) == Radiant.Second) {
+        } else if (radiantOf(pointB) == Radiant.Fourth) {
           if (Line.fromPoints(pointA: pointA, pointB: center).angleBetween(
                       Line.fromPoints(
-                          pointA: Point(center.x - radius, center.y),
+                          pointA: Point(center.x, center.y - radius),
                           pointB: center)) +
                   Line.fromPoints(pointA: pointB, pointB: center).angleBetween(
                       Line.fromPoints(
-                          pointA: Point(center.x - radius, center.y),
+                          pointA: Point(center.x, center.y - radius),
                           pointB: center)) <=
               math.pi / 2.0) {
             return arc;
@@ -184,14 +184,14 @@ class Circle extends Shape {
       case Radiant.Fourth:
         if (radiantOf(pointB) == Radiant.Fourth) {
           return arc;
-        } else if (radiantOf(pointB) == Radiant.Third) {
+        } else if (radiantOf(pointB) == Radiant.First) {
           if (Line.fromPoints(pointA: pointA, pointB: center).angleBetween(
                       Line.fromPoints(
-                          pointA: Point(center.x, center.y - radius),
+                          pointA: Point(center.x + radius, center.y),
                           pointB: center)) +
                   Line.fromPoints(pointA: pointB, pointB: center).angleBetween(
                       Line.fromPoints(
-                          pointA: Point(center.x, center.y - radius),
+                          pointA: Point(center.x + radius, center.y),
                           pointB: center)) <=
               math.pi / 2.0) {
             return arc;
