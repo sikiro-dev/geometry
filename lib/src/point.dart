@@ -22,8 +22,8 @@ class Point extends Shape {
   factory Point.clockwise(Point start, Point end, List<Point> pts,
       {bool reversed = false}) {
     return pts[0].higher(pts[1])
-        ? reversed ? pts[1] : pts[0]
-        : reversed ? pts[0] : pts[1];
+        ? reversed ? pts[0] : pts[1]
+        : reversed ? pts[1] : pts[0];
   }
 
   ///return the closer shape from [shapes]
