@@ -21,8 +21,8 @@ class Point extends Shape {
   ///[start] e [end] sono i punti rispetto ai quali si vuole sapere quale dei due punti di [pts] permette di disegnare l'arco che gira in senso orario
   factory Point.clockwise(Point start, Point end, List<Point> pts) {
     return start.wider(end)
-        ? pts[0].higher(pts[1]) ? pts[1] : pts[0]
-        : pts[0].higher(pts[1]) ? pts[0] : pts[1];
+        ? pts[0].higher(pts[1]) ? pts[0] : pts[1]
+        : pts[0].higher(pts[1]) ? pts[1] : pts[0];
   }
 
   ///return the closer shape from [shapes]
