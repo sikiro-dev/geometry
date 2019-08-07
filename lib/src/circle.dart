@@ -106,7 +106,7 @@ class Circle extends Shape {
       if (point.y >= center.y) {
         return Radiant.Second;
       } else {
-        return Radiant.Fourth;
+        return Radiant.Third;
       }
     }
   }
