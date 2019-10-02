@@ -1,4 +1,4 @@
-import 'package:geometry/geometry.dart';
+import 'package:geometry_kp/geometry.dart';
 import 'package:test/test.dart';
 import 'dart:math' as math;
 

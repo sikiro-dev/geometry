@@ -1,6 +1,6 @@
-import 'package:geometry/src/shape.dart';
-import 'package:geometry/src/line.dart';
-import 'package:geometry/src/circle.dart';
+import 'package:geometry_kp/src/shape.dart';
+import 'package:geometry_kp/src/line.dart';
+import 'package:geometry_kp/src/circle.dart';
 import 'dart:math' as math;
 
 ///rappresent a point on the plane

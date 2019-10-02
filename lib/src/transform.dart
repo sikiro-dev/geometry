@@ -1,4 +1,4 @@
-import 'package:geometry/src/point.dart';
+import 'package:geometry_kp/src/point.dart';
 
 ///rapresent a transform matrix
 ///[scale] is the scalar factor

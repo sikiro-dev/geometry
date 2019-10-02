@@ -1,6 +1,6 @@
-import 'package:geometry/src/shape.dart';
-import 'package:geometry/src/point.dart';
-import 'package:geometry/src/circle.dart';
+import 'package:geometry_kp/src/shape.dart';
+import 'package:geometry_kp/src/point.dart';
+import 'package:geometry_kp/src/circle.dart';
 import 'package:meta/meta.dart';
 import 'dart:math' as math;
 

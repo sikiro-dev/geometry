@@ -1,5 +1,5 @@
-import 'package:geometry/src/shape.dart';
-import 'package:geometry/src/point.dart';
+import 'package:geometry_kp/src/shape.dart';
+import 'package:geometry_kp/src/point.dart';
 
 ///rappresent an arrow, like an edge of a graph
 ///[start] is the start of the arc
